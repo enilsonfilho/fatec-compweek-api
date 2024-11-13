@@ -17,8 +17,8 @@ public class ProdutoDTO {
     @NotEmpty(message = "O nome não pode ser vazio")
     private String nome;
 
-    @NotNull(message = "O descrição não pode ser null")
-    @NotEmpty(message = "O descrição não pode ser vazio")
+    @NotNull(message = "A descrição não pode ser null")
+    @NotEmpty(message = "A descrição não pode ser vazia")
     private String descricao;
 
     @NotNull(message = "O preço não pode ser null")

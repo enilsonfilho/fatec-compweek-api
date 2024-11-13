@@ -2,7 +2,6 @@ package br.com.fatec;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -27,11 +26,11 @@ public class ProdutoResource {
     )
     @APIResponse(
         responseCode = "201",
-        description = "Produto cadastrado com sucesso"
+        description = "Produto cadastrado com sucesso!"
     )
     @APIResponse(
         responseCode = "500",
-        description = "Erro interno no servidor"
+        description = "Erro interno no servidor!"
     )
     @Transactional
     @POST
@@ -43,6 +42,18 @@ public class ProdutoResource {
         return Response.status(Response.Status.CREATED).entity(produto).build();
     }
 
+    @Operation(
+        summary = "Listar produtos",
+        description = "Esse recurso lista produtos"
+    )
+    @APIResponse(
+        responseCode = "200",
+        description = "Produtos listados com sucesso!"
+    )
+    @APIResponse(
+        responseCode = "500",
+        description = "Erro interno no servidor!"
+    )
     @GET
     @Path("/produtos")
     public Response listarProduto() {
@@ -50,16 +61,20 @@ public class ProdutoResource {
     }
 
     @Operation(
-        summary = "Listar produto",
-        description = "Esse lista produtos cadastrados"
+        summary = "Buscar produto",
+        description = "Esse recurso busca um produto pelo identificador"
     )
     @APIResponse(
         responseCode = "200",
-        description = "Produto encontrado com sucesso"
+        description = "Produto encontrado com sucesso!"
     )
     @APIResponse(
         responseCode = "404",
         description = "Produto não encontrado!"
+    )
+    @APIResponse(
+        responseCode = "500",
+        description = "Erro interno no servidor!"
     )
     @GET
     @Path("/produto/{id}")
@@ -73,6 +88,22 @@ public class ProdutoResource {
         return Response.status(Response.Status.OK).entity(produto).build();
     }
 
+    @Operation(
+        summary = "Excluir produto",
+        description = "Esse recurso exclui um produto pelo identificador"
+    )
+    @APIResponse(
+        responseCode = "200",
+        description = "Produto excluído com sucesso!"
+    )
+    @APIResponse(
+        responseCode = "404",
+        description = "Produto não encontrado!"
+    )
+    @APIResponse(
+        responseCode = "500",
+        description = "Erro interno no servidor!"
+    )
     @Transactional
     @DELETE
     @Path("/produto/{id}")
@@ -88,6 +119,22 @@ public class ProdutoResource {
         return Response.status(Response.Status.OK).build();
     }
 
+    @Operation(
+        summary = "Atualizar produto",
+        description = "Esse recurso atualiza um produto"
+    )
+    @APIResponse(
+        responseCode = "200",
+        description = "Produto atualizado com sucesso!"
+    )
+    @APIResponse(
+        responseCode = "404",
+        description = "Produto não encontrado!"
+    )
+    @APIResponse(
+        responseCode = "500",
+        description = "Erro interno no servidor!"
+    )
     @Transactional
     @PUT
     @Path("/produto/{id}")
