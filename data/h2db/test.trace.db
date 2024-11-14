@@ -1,0 +1,3 @@
+2024-11-13 20:48:54.553140-03:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(rn_ integer not null, id bigint, preco float(53), descricao varchar(255), nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-230]
